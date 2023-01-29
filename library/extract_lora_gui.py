@@ -68,7 +68,7 @@ def gradio_extract_lora_tab():
                 interactive=True,
             )
             button_model_tuned_file = gr.Button(
-                folder_symbol, elem_id='open_folder_small', enabled=False,
+                folder_symbol, elem_id='open_folder_small', visible=False,
             )
             button_model_tuned_file.click(
                 get_file_path,
@@ -82,7 +82,7 @@ def gradio_extract_lora_tab():
                 interactive=True,
             )
             button_model_org_file = gr.Button(
-                folder_symbol, elem_id='open_folder_small', enabled=False,
+                folder_symbol, elem_id='open_folder_small', visible=False,
             )
             button_model_org_file.click(
                 get_file_path,
@@ -96,7 +96,7 @@ def gradio_extract_lora_tab():
                 interactive=True,
             )
             button_save_to = gr.Button(
-                folder_symbol, elem_id='open_folder_small', enabled=False,
+                folder_symbol, elem_id='open_folder_small', visible=False,
             )
             button_save_to.click(
                 get_saveasfilename_path, inputs=[save_to, lora_ext, lora_ext_name], outputs=save_to

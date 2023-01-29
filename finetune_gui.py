@@ -452,7 +452,7 @@ def finetune_tab():
                 placeholder='folder where the training configuration files will be saved',
             )
             train_dir_folder = gr.Button(
-                folder_symbol, elem_id='open_folder_small', enabled=False,
+                folder_symbol, elem_id='open_folder_small', visible=False,
             )
             train_dir_folder.click(get_folder_path, outputs=train_dir)
 
@@ -461,7 +461,7 @@ def finetune_tab():
                 placeholder='folder where the training images are located',
             )
             image_folder_input_folder = gr.Button(
-                folder_symbol, elem_id='open_folder_small', enabled=False,
+                folder_symbol, elem_id='open_folder_small', visible=False,
             )
             image_folder_input_folder.click(
                 get_folder_path, outputs=image_folder
@@ -472,7 +472,7 @@ def finetune_tab():
                 placeholder='folder where the model will be saved',
             )
             output_dir_input_folder = gr.Button(
-                folder_symbol, elem_id='open_folder_small', enabled=False,
+                folder_symbol, elem_id='open_folder_small', visible=False,
             )
             output_dir_input_folder.click(get_folder_path, outputs=output_dir)
 
@@ -481,7 +481,7 @@ def finetune_tab():
                 placeholder='Optional: enable logging and output TensorBoard log to this folder',
             )
             logging_dir_input_folder = gr.Button(
-                folder_symbol, elem_id='open_folder_small', enabled=False,
+                folder_symbol, elem_id='open_folder_small', visible=False,
             )
             logging_dir_input_folder.click(
                 get_folder_path, outputs=logging_dir
