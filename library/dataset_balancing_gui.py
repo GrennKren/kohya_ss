@@ -115,7 +115,7 @@ def gradio_dataset_balancing_tab():
             )
 
             select_dataset_folder_button = gr.Button(
-                '📂', elem_id='open_folder_small'
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             select_dataset_folder_button.click(
                 get_folder_path, outputs=select_dataset_folder_input

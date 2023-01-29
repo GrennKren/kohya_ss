@@ -48,9 +48,9 @@ def UI(username, password):
 
     # Show the interface
     if not username == '':
-        interface.launch(auth=(username, password))
+        interface.launch(auth=(username, password), share=True)
     else:
-        interface.launch()
+        interface.launch(share=True)
 
 
 if __name__ == '__main__':

@@ -505,7 +505,7 @@ def ti_tab(
                 placeholder='Folder where the training folders containing the images are located',
             )
             train_data_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             train_data_dir_input_folder.click(
                 get_folder_path, outputs=train_data_dir
@@ -515,7 +515,7 @@ def ti_tab(
                 placeholder='(Optional) Folder where where the regularization folders containing the images are located',
             )
             reg_data_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             reg_data_dir_input_folder.click(
                 get_folder_path, outputs=reg_data_dir
@@ -526,7 +526,7 @@ def ti_tab(
                 placeholder='Folder to output trained model',
             )
             output_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             output_dir_input_folder.click(get_folder_path, outputs=output_dir)
             logging_dir = gr.Textbox(
@@ -534,7 +534,7 @@ def ti_tab(
                 placeholder='Optional: enable logging and output TensorBoard log to this folder',
             )
             logging_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             logging_dir_input_folder.click(
                 get_folder_path, outputs=logging_dir
@@ -573,7 +573,7 @@ def ti_tab(
                 placeholder='(Optional) Path to existing TI embeding file to keep training',
             )
             weights_file_input = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             weights_file_input.click(get_file_path, outputs=weights)
         with gr.Row():
@@ -653,7 +653,7 @@ def ti_tab(
                     label='VAE',
                     placeholder='(Optiona) path to checkpoint of vae to replace for training',
                 )
-                vae_button = gr.Button('📂', elem_id='open_folder_small', disabled=True,)
+                vae_button = gr.Button('📂', elem_id='open_folder_small', enabled=False,)
                 vae_button.click(get_any_file_path, outputs=vae)
             (
                 use_8bit_adam,

@@ -80,7 +80,7 @@ def gradio_basic_caption_gui_tab():
                 interactive=True,
             )
             button_images_dir_input = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             button_images_dir_input.click(
                 get_folder_path, outputs=images_dir_input

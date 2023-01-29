@@ -137,7 +137,7 @@ def gradio_dreambooth_folder_creation_tab(
                 interactive=True,
             )
             button_util_training_images_dir_input = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             button_util_training_images_dir_input.click(
                 get_folder_path, outputs=util_training_images_dir_input
@@ -155,7 +155,7 @@ def gradio_dreambooth_folder_creation_tab(
                 interactive=True,
             )
             button_util_regularization_images_dir_input = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             button_util_regularization_images_dir_input.click(
                 get_folder_path, outputs=util_regularization_images_dir_input
@@ -173,7 +173,7 @@ def gradio_dreambooth_folder_creation_tab(
                 interactive=True,
             )
             button_util_training_dir_output = gr.Button(
-                '📂', elem_id='open_folder_small', disabled=True,
+                '📂', elem_id='open_folder_small', enabled=False,
             )
             button_util_training_dir_output.click(
                 get_folder_path, outputs=util_training_dir_output
