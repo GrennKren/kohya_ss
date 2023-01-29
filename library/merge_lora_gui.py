@@ -11,7 +11,7 @@ document_symbol = '\U0001F4C4'   # 📄
 
 import json
 var = {}
-with open('../variables.json', 'r') as file:
+with open('variables.json', 'r') as file:
     var = json.load(file)
     python = var['python']
     accelerate = var['accelerate']
