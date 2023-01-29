@@ -1,4 +1,4 @@
-from tkinter import filedialog, Tk
+#from tkinter import filedialog, Tk
 import os
 import gradio as gr
 from easygui import msgbox
@@ -32,19 +32,19 @@ def get_file_path(
 
     initial_dir, initial_file = get_dir_and_file(file_path)
 
-    root = Tk()
-    root.wm_attributes('-topmost', 1)
-    root.withdraw()
-    file_path = filedialog.askopenfilename(
-        filetypes=(
-            (f'{extension_name}', f'{defaultextension}'),
-            ('All files', '*'),
-        ),
-        defaultextension=defaultextension,
-        initialfile=initial_file,
-        initialdir=initial_dir,
-    )
-    root.destroy()
+    #root = Tk()
+    #root.wm_attributes('-topmost', 1)
+    #root.withdraw()
+    #file_path = filedialog.askopenfilename(
+    #    filetypes=(
+    #        (f'{extension_name}', f'{defaultextension}'),
+    #        ('All files', '*'),
+    #    ),
+    #    defaultextension=defaultextension,
+    #    initialfile=initial_file,
+    #    initialdir=initial_dir,
+    #)
+    #root.destroy()
 
     if file_path == '':
         file_path = current_file_path
@@ -308,10 +308,10 @@ def set_pretrained_model_name_or_path_input(value, v2, v_parameterization):
 def gradio_config():
     with gr.Accordion('Configuration file', open=False):
         with gr.Row():
-            button_open_config = gr.Button('Open 📂', elem_id='open_folder')
-            button_save_config = gr.Button('Save 💾', elem_id='open_folder')
+            button_open_config = gr.Button('Open 📂', elem_id='open_folder', disabled=True)
+            button_save_config = gr.Button('Save 💾', elem_id='open_folder', disabled=True)
             button_save_as_config = gr.Button(
-                'Save as... 💾', elem_id='open_folder'
+                'Save as... 💾', elem_id='open_folder', disabled=True,
             )
             config_file_name = gr.Textbox(
                 label='',
@@ -329,7 +329,7 @@ def gradio_source_model():
                 placeholder='enter the path to custom model or name of pretrained model',
             )
             pretrained_model_name_or_path_file = gr.Button(
-                document_symbol, elem_id='open_folder_small'
+                document_symbol, elem_id='open_folder_small', disabled=True,
             )
             pretrained_model_name_or_path_file.click(
                 get_any_file_path,
@@ -337,7 +337,7 @@ def gradio_source_model():
                 outputs=pretrained_model_name_or_path,
             )
             pretrained_model_name_or_path_folder = gr.Button(
-                folder_symbol, elem_id='open_folder_small'
+                folder_symbol, elem_id='open_folder_small', disabled=True,
             )
             pretrained_model_name_or_path_folder.click(
                 get_folder_path,
@@ -550,7 +550,7 @@ def gradio_advanced_training():
             label='Resume from saved training state',
             placeholder='path to "last-state" state folder to resume from',
         )
-        resume_button = gr.Button('📂', elem_id='open_folder_small')
+        resume_button = gr.Button('📂', elem_id='open_folder_small', disabled=True)
         resume_button.click(get_folder_path, outputs=resume)
         max_train_epochs = gr.Textbox(
             label='Max train epoch',

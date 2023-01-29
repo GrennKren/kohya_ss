@@ -506,7 +506,7 @@ def lora_tab(
                 label='Image folder',
                 placeholder='Folder where the training folders containing the images are located',
             )
-            train_data_dir_folder = gr.Button('📂', elem_id='open_folder_small')
+            train_data_dir_folder = gr.Button('📂', elem_id='open_folder_small', disabled=True)
             train_data_dir_folder.click(
                 get_folder_path, outputs=train_data_dir
             )
@@ -514,20 +514,20 @@ def lora_tab(
                 label='Regularisation folder',
                 placeholder='(Optional) Folder where where the regularization folders containing the images are located',
             )
-            reg_data_dir_folder = gr.Button('📂', elem_id='open_folder_small')
+            reg_data_dir_folder = gr.Button('📂', elem_id='open_folder_small', disabled=True,)
             reg_data_dir_folder.click(get_folder_path, outputs=reg_data_dir)
         with gr.Row():
             output_dir = gr.Textbox(
                 label='Output folder',
                 placeholder='Folder to output trained model',
             )
-            output_dir_folder = gr.Button('📂', elem_id='open_folder_small')
+            output_dir_folder = gr.Button('📂', elem_id='open_folder_small', disabled=True,)
             output_dir_folder.click(get_folder_path, outputs=output_dir)
             logging_dir = gr.Textbox(
                 label='Logging folder',
                 placeholder='Optional: enable logging and output TensorBoard log to this folder',
             )
-            logging_dir_folder = gr.Button('📂', elem_id='open_folder_small')
+            logging_dir_folder = gr.Button('📂', elem_id='open_folder_small', disabled=True,)
             logging_dir_folder.click(get_folder_path, outputs=logging_dir)
         with gr.Row():
             output_name = gr.Textbox(
@@ -568,7 +568,7 @@ def lora_tab(
                 placeholder='{Optional) Path to existing LoRA network weights to resume training',
             )
             lora_network_weights_file = gr.Button(
-                document_symbol, elem_id='open_folder_small'
+                document_symbol, elem_id='open_folder_small', disabled=True,
             )
             lora_network_weights_file.click(
                 get_any_file_path,

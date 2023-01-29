@@ -13,7 +13,6 @@ import argparse
 from library.common_gui import (
     get_folder_path,
     remove_doublequote,
-    get_file_path,
     get_any_file_path,
     get_saveasfile_path,
     color_aug_changed,
@@ -172,7 +171,6 @@ def open_configuration(
     parameters = list(locals().items())
 
     original_file_path = file_path
-    file_path = get_file_path(file_path)
 
     if not file_path == '' and not file_path == None:
         # load variables from JSON file
@@ -477,7 +475,7 @@ def dreambooth_tab(
                 placeholder='Folder where the training folders containing the images are located',
             )
             train_data_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small'
+                '📂', elem_id='open_folder_small', disabled=True,
             )
             train_data_dir_input_folder.click(
                 get_folder_path, outputs=train_data_dir
@@ -487,7 +485,7 @@ def dreambooth_tab(
                 placeholder='(Optional) Folder where where the regularization folders containing the images are located',
             )
             reg_data_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small'
+                '📂', elem_id='open_folder_small', disabled=True,
             )
             reg_data_dir_input_folder.click(
                 get_folder_path, outputs=reg_data_dir
@@ -498,7 +496,7 @@ def dreambooth_tab(
                 placeholder='Folder to output trained model',
             )
             output_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small'
+                '📂', elem_id='open_folder_small', disabled=True,
             )
             output_dir_input_folder.click(get_folder_path, outputs=output_dir)
             logging_dir = gr.Textbox(
@@ -506,7 +504,7 @@ def dreambooth_tab(
                 placeholder='Optional: enable logging and output TensorBoard log to this folder',
             )
             logging_dir_input_folder = gr.Button(
-                '📂', elem_id='open_folder_small'
+                '📂', elem_id='open_folder_small', disabled=True,
             )
             logging_dir_input_folder.click(
                 get_folder_path, outputs=logging_dir
@@ -587,7 +585,7 @@ def dreambooth_tab(
                     label='VAE',
                     placeholder='(Optiona) path to checkpoint of vae to replace for training',
                 )
-                vae_button = gr.Button('📂', elem_id='open_folder_small')
+                vae_button = gr.Button('📂', elem_id='open_folder_small', disabled=True)
                 vae_button.click(get_any_file_path, outputs=vae)
             (
                 use_8bit_adam,

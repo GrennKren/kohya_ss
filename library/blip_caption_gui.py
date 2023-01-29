@@ -78,7 +78,7 @@ def gradio_blip_caption_gui_tab():
                 interactive=True,
             )
             button_train_data_dir_input = gr.Button(
-                '📂', elem_id='open_folder_small'
+                '📂', elem_id='open_folder_small', disabled=True,
             )
             button_train_data_dir_input.click(
                 get_folder_path, outputs=train_data_dir
