@@ -9,7 +9,13 @@ refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
 
-
+import json
+var = {}
+with open('../variables.json', 'r') as file:
+    var = json.load(file)
+    python = var['python']
+    accelerate = var['accelerate']
+    
 def merge_lora(
     lora_a_model, lora_b_model, ratio, save_to, precision, save_precision,
 ):
@@ -34,7 +40,7 @@ def merge_lora(
     ratio_a = ratio
     ratio_b = 1 - ratio
 
-    run_cmd = f'.\\venv\Scripts\python.exe "networks\merge_lora.py"'
+    run_cmd = f'{python} "networks\merge_lora.py"'
     run_cmd += f' --save_precision {save_precision}'
     run_cmd += f' --precision {precision}'
     run_cmd += f' --save_to {save_to}'

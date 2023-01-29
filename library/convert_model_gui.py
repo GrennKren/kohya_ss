@@ -10,7 +10,13 @@ refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
 
-
+import json
+var = {}
+with open('variables.json', 'r') as file:
+    var = json.load(file.read())
+    python = var['python']
+    accelerate = var['accelerate']
+    
 def convert_model(
     source_model_input,
     source_model_type,
@@ -40,7 +46,7 @@ def convert_model(
         msgbox('The provided target folder does not exist')
         return
 
-    run_cmd = f'.\\venv\Scripts\python.exe "tools/convert_diffusers20_original_sd.py"'
+    run_cmd = f'{python} "tools/convert_diffusers20_original_sd.py"'
 
     v1_models = [
         'runwayml/stable-diffusion-v1-5',

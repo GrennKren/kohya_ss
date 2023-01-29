@@ -25,7 +25,12 @@ refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
 
-
+var = {}
+with open('variables.json', 'r') as file:
+    var = json.load(file)
+    python = var['python']
+    accelerate = var['accelerate']
+    
 def save_configuration(
     save_as,
     file_path,
@@ -249,7 +254,7 @@ def train_model(
             os.mkdir(train_dir)
 
         run_cmd = (
-            f'./venv/Scripts/python.exe finetune/merge_captions_to_metadata.py'
+            f'{python} finetune/merge_captions_to_metadata.py'
         )
         if caption_extension == '':
             run_cmd += f' --caption_extension=".caption"'
@@ -268,7 +273,7 @@ def train_model(
     # create images buckets
     if generate_image_buckets:
         run_cmd = (
-            f'./venv/Scripts/python.exe finetune/prepare_buckets_latents.py'
+            f'{python} finetune/prepare_buckets_latents.py'
         )
         run_cmd += f' "{image_folder}"'
         run_cmd += f' "{train_dir}/{caption_metadata_filename}"'
@@ -311,7 +316,7 @@ def train_model(
     lr_warmup_steps = round(float(int(lr_warmup) * int(max_train_steps) / 100))
     print(f'lr_warmup_steps = {lr_warmup_steps}')
 
-    run_cmd = f'accelerate launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "./fine_tune.py"'
+    run_cmd = f'{accelerate} launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "./fine_tune.py"'
     if v2:
         run_cmd += ' --v2'
     if v_parameterization:

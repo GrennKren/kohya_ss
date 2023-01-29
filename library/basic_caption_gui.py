@@ -3,6 +3,12 @@ from easygui import msgbox
 import subprocess
 from .common_gui import get_folder_path, add_pre_postfix, find_replace
 
+import json
+var = {}
+with open('../variables.json', 'r') as file:
+    var = json.load(file)
+    python = var['python']
+    accelerate = var['accelerate']
 
 def caption_images(
     caption_text_input,
@@ -25,7 +31,7 @@ def caption_images(
         print(
             f'Captioning files in {images_dir_input} with {caption_text_input}...'
         )
-        run_cmd = f'python "tools/caption.py"'
+        run_cmd = f'{python} "tools/caption.py"'
         run_cmd += f' --caption_text="{caption_text_input}"'
         if overwrite_input:
             run_cmd += f' --overwrite'

@@ -9,7 +9,13 @@ refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
 
-
+import json
+var = {}
+with open('../variables.json', 'r') as file:
+    var = json.load(file)
+    python = var['python']
+    accelerate = var['accelerate']
+    
 def extract_lora(
     model_tuned, model_org, save_to, save_precision, dim, v2,
 ):
@@ -31,7 +37,7 @@ def extract_lora(
         msgbox('The provided base model is not a file')
         return
 
-    run_cmd = f'.\\venv\Scripts\python.exe "networks\extract_lora_from_models.py"'
+    run_cmd = f'{python} "networks\extract_lora_from_models.py"'
     run_cmd += f' --save_precision {save_precision}'
     run_cmd += f' --save_to "{save_to}"'
     run_cmd += f' --model_org "{model_org}"'

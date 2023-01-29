@@ -9,6 +9,14 @@ refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
 
+
+import json
+var = {}
+with open('../variables.json', 'r') as file:
+    var = json.load(file)
+    python = var['python']
+    accelerate = var['accelerate']
+    
 def get_dir_and_file(file_path):
     dir_path, file_name = os.path.split(file_path)
     return (dir_path, file_name)

@@ -36,7 +36,12 @@ refresh_symbol = '\U0001f504'  # 🔄
 save_style_symbol = '\U0001f4be'  # 💾
 document_symbol = '\U0001F4C4'   # 📄
 
-
+var = {}
+with open('variables.json', 'r') as file:
+    var = json.load(file)
+    python = var['python']
+    accelerate = var['accelerate']
+    
 def save_configuration(
     save_as,
     file_path,
@@ -344,7 +349,7 @@ def train_model(
     lr_warmup_steps = round(float(int(lr_warmup) * int(max_train_steps) / 100))
     print(f'lr_warmup_steps = {lr_warmup_steps}')
 
-    run_cmd = f'accelerate launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "train_textual_inversion.py"'
+    run_cmd = f'{accelerate} launch --num_cpu_threads_per_process={num_cpu_threads_per_process} "train_textual_inversion.py"'
     if v2:
         run_cmd += ' --v2'
     if v_parameterization:
