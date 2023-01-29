@@ -241,24 +241,24 @@ def train_model(
     keep_tokens,
 ):
     if pretrained_model_name_or_path == '':
-        msgbox('Source model information is missing')
+        print('Source model information is missing')
         return
 
     if train_data_dir == '':
-        msgbox('Image folder path is missing')
+        print('Image folder path is missing')
         return
 
     if not os.path.exists(train_data_dir):
-        msgbox('Image folder does not exist')
+        print('Image folder does not exist')
         return
 
     if reg_data_dir != '':
         if not os.path.exists(reg_data_dir):
-            msgbox('Regularisation folder does not exist')
+            print('Regularisation folder does not exist')
             return
 
     if output_dir == '':
-        msgbox('Output folder path is missing')
+        print('Output folder path is missing')
         return
 
     # Get a list of all subfolders in train_data_dir
@@ -523,26 +523,7 @@ def dreambooth_tab(
                 value='last',
                 interactive=True,
             )
-        train_data_dir.change(
-            remove_doublequote,
-            inputs=[train_data_dir],
-            outputs=[train_data_dir],
-        )
-        reg_data_dir.change(
-            remove_doublequote,
-            inputs=[reg_data_dir],
-            outputs=[reg_data_dir],
-        )
-        output_dir.change(
-            remove_doublequote,
-            inputs=[output_dir],
-            outputs=[output_dir],
-        )
-        logging_dir.change(
-            remove_doublequote,
-            inputs=[logging_dir],
-            outputs=[logging_dir],
-        )
+        
     with gr.Tab('Training parameters'):
         (
             learning_rate,

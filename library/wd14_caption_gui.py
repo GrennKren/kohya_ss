@@ -13,16 +13,16 @@ with open('variables.json', 'r') as file:
 def caption_images(train_data_dir, caption_extension, batch_size, thresh):
     # Check for caption_text_input
     # if caption_text_input == "":
-    #     msgbox("Caption text is missing...")
+    #     print("Caption text is missing...")
     #     return
 
     # Check for images_dir_input
     if train_data_dir == '':
-        msgbox('Image folder is missing...')
+        print('Image folder is missing...')
         return
     
     if caption_extension == '':
-        msgbox('Please provide an extension for the caption files.')
+        print('Please provide an extension for the caption files.')
         return
 
     print(f'Captioning files in {train_data_dir}...')

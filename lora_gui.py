@@ -260,31 +260,31 @@ def train_model(
     training_comment, keep_tokens,
 ):
     if pretrained_model_name_or_path == '':
-        msgbox('Source model information is missing')
+        print('Source model information is missing')
         return
 
     if train_data_dir == '':
-        msgbox('Image folder path is missing')
+        print('Image folder path is missing')
         return
 
     if not os.path.exists(train_data_dir):
-        msgbox('Image folder does not exist')
+        print('Image folder does not exist')
         return
 
     if reg_data_dir != '':
         if not os.path.exists(reg_data_dir):
-            msgbox('Regularisation folder does not exist')
+            print('Regularisation folder does not exist')
             return
 
     if output_dir == '':
-        msgbox('Output folder path is missing')
+        print('Output folder path is missing')
         return
     
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     
     if stop_text_encoder_training_pct > 0:
-        msgbox('Output "stop text encoder training" is not yet supported. Ignoring')
+        print('Output "stop text encoder training" is not yet supported. Ignoring')
         stop_text_encoder_training_pct = 0
 
     # If string is empty set string to 0.
@@ -294,7 +294,7 @@ def train_model(
         unet_lr = 0
 
     if (float(text_encoder_lr) == 0) and (float(unet_lr) == 0):
-        msgbox(
+        print(
             'At least one Learning Rate value for "Text encoder" or "Unet" need to be provided'
         )
         return
@@ -546,26 +546,7 @@ def lora_tab(
                 placeholder='(Optional) Add training comment to be included in metadata',
                 interactive=True,
             )
-        train_data_dir.change(
-            remove_doublequote,
-            inputs=[train_data_dir],
-            outputs=[train_data_dir],
-        )
-        reg_data_dir.change(
-            remove_doublequote,
-            inputs=[reg_data_dir],
-            outputs=[reg_data_dir],
-        )
-        output_dir.change(
-            remove_doublequote,
-            inputs=[output_dir],
-            outputs=[output_dir],
-        )
-        logging_dir.change(
-            remove_doublequote,
-            inputs=[logging_dir],
-            outputs=[logging_dir],
-        )
+        
     with gr.Tab('Training parameters'):
         with gr.Row():
             lora_network_weights = gr.Textbox(
